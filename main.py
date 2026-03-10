@@ -48,8 +48,10 @@ def predict(data: DiabetesFeatures):
     ]])
 
     prediction = model.predict(features)[0]
+    probability = model.predict_proba(features)[0][1]
 
     return {
         "prediction": int(prediction),
+        "probability": float(probability),
         "result": "Diabetic" if prediction == 1 else "Not Diabetic"
     }
